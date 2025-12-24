@@ -83,7 +83,9 @@ const TrueHireLanding = () => {
       {/* Header */}
       <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
-          <div className="font-bold text-xl sm:text-2xl text-gray-900">TrueHire®</div>
+          <div className="font-bold text-xl sm:text-2xl text-gray-900">
+            TrueHire®
+          </div>
         </div>
       </header>
 
@@ -372,7 +374,10 @@ const TrueHireLanding = () => {
               <img
                 src="https://res.cloudinary.com/dpcgk2sev/image/upload/v1766608204/truehire_logo_u5c805.jpg"
                 alt=""
-                style={{ borderRadius: "1rem" }}
+                style={{
+                  borderRadius: "1rem",
+                  objectFit: "cover",
+                }}
                 className="w-full max-h-96"
               />
             </div>
@@ -411,7 +416,9 @@ const TrueHireLanding = () => {
                 >
                   {item.step}
                 </div>
-                <p className="text-base sm:text-xl text-gray-900 font-medium">{item.text}</p>
+                <p className="text-base sm:text-xl text-gray-900 font-medium">
+                  {item.text}
+                </p>
               </div>
             ))}
           </div>
@@ -501,7 +508,9 @@ const TrueHireLanding = () => {
       {/* Footer - Simplified */}
       <footer className="bg-gray-900 text-gray-400 py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="font-bold text-xl sm:text-2xl text-white mb-4">TrueHire®</div>
+          <div className="font-bold text-xl sm:text-2xl text-white mb-4">
+            TrueHire®
+          </div>
           <p className="text-xs sm:text-sm mb-6">
             Built for recruiters who want confidence in every hire.
           </p>
