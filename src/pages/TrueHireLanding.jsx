@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FingerprintOutlined,
   CheckCircleOutline,
@@ -25,6 +25,20 @@ const TrueHireLanding = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // Initialize from localStorage on mount
+  useEffect(() => {
+    try {
+      const storedData = localStorage.getItem("trueHireRegistration");
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        setFormData(parsedData);
+        setIsSubmitted(true);
+      }
+    } catch (error) {
+      console.error("Error reading from localStorage:", error);
+    }
+  }, []);
+
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -45,6 +59,8 @@ const TrueHireLanding = () => {
     }
 
     setIsLoading(true);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
 
     try {
       const response = await fetch(
@@ -55,14 +71,24 @@ const TrueHireLanding = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
+          signal: controller.signal,
         }
       );
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        // Handle non-2xx responses
+        const data = await response.json();
+        throw new Error(data.message || "Registration failed");
+      }
 
       const data = await response.json();
 
       if (data.success) {
+        // Save to localStorage immediately
+        localStorage.setItem("trueHireRegistration", JSON.stringify(formData));
         setIsSubmitted(true);
-        setFormData({ name: "", email: "", company: "", role: "" });
       } else {
         setErrorMessage(
           data.message || "Something went wrong. Please try again."
@@ -71,11 +97,25 @@ const TrueHireLanding = () => {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setErrorMessage("Unable to connect to server. Please try again later.");
+
+      let errorMsg = "Unable to connect to server. Please try again later.";
+
+      if (error.name === "AbortError") {
+        errorMsg =
+          "Request timeout. Please check your connection and try again.";
+      }
+
+      setErrorMessage(errorMsg);
       setTimeout(() => setErrorMessage(""), 3000);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleClearStorage = () => {
+    localStorage.removeItem("trueHireRegistration");
+    setIsSubmitted(false);
+    setFormData({ name: "", email: "", company: "", role: "" });
   };
 
   return (
@@ -216,10 +256,19 @@ const TrueHireLanding = () => {
                 <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
                   You're on the list!
                 </h3>
-                <p className="text-lg sm:text-xl text-gray-600 mb-6">
+                <p className="text-lg sm:text-xl text-gray-600 mb-2">
                   Thanks for joining the waitlist. We'll be in touch soon with
                   early access details.
                 </p>
+                <p className="text-sm text-gray-500 mb-6">
+                  Registered as: <strong>{formData.email}</strong>
+                </p>
+                <button
+                  onClick={handleClearStorage}
+                  className="text-sm text-gray-500 hover:text-gray-700 underline transition-colors"
+                >
+                  Not you? Clear and try again
+                </button>
               </div>
             )}
           </div>
