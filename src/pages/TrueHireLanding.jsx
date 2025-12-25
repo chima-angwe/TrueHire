@@ -16,7 +16,10 @@ const DashboardMockup = () => (
   <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl border-2 border-gray-200 overflow-hidden">
     <div className="bg-gradient-to-r from-gray-50 to-white border-b border-gray-200 px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 flex items-center justify-between">
       <div className="flex items-center gap-2 sm:gap-3">
-        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-md sm:rounded-lg"></div>
+        <div
+          className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-md sm:rounded-lg"
+          style={{ backgroundColor: "#2791C1" }}
+        ></div>
         <span className="font-semibold text-gray-900 text-xs sm:text-sm md:text-base">
           Candidate Report
         </span>
@@ -29,7 +32,7 @@ const DashboardMockup = () => (
     </div>
     <div className="p-3 sm:p-4 md:p-6 bg-gradient-to-br from-white to-gray-50">
       <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-5 md:mb-6">
-        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-xl flex-shrink-0">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-black rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-xl flex-shrink-0">
           JD
         </div>
         <div>
@@ -125,7 +128,7 @@ const DashboardMockup = () => (
                 style={{ fontSize: "1rem" }}
                 className="text-green-500 sm:text-lg"
               />
-              <span className="text-xs sm:text-sm text-gray-700">
+              <span className="text-xs sm:text-sm" style={{ color: "#2791C1" }}>
                 Resume verified
               </span>
             </div>
@@ -134,7 +137,7 @@ const DashboardMockup = () => (
                 style={{ fontSize: "1rem" }}
                 className="text-green-500 sm:text-lg"
               />
-              <span className="text-xs sm:text-sm text-gray-700">
+              <span className="text-xs sm:text-sm" style={{ color: "#2791C1" }}>
                 References validated
               </span>
             </div>
@@ -143,7 +146,7 @@ const DashboardMockup = () => (
                 style={{ fontSize: "1rem" }}
                 className="text-yellow-500 sm:text-lg"
               />
-              <span className="text-xs sm:text-sm text-gray-700">
+              <span className="text-xs sm:text-sm" style={{ color: "#2791C1" }}>
                 AI assistance detected
               </span>
             </div>
@@ -218,10 +221,7 @@ const FeatureMockup = ({ type }) => {
           <h4 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">
             Confidence Analysis
           </h4>
-          <BarChartOutlined
-            className="text-blue-500"
-            style={{ fontSize: "1.25rem" }}
-          />
+          <BarChartOutlined style={{ fontSize: "1.25rem", color: "#2791C1" }} />
         </div>
         <div className="space-y-2 sm:space-y-3">
           {[
@@ -256,8 +256,7 @@ const FeatureMockup = ({ type }) => {
           Reference Check
         </h4>
         <PersonSearchOutlined
-          className="text-blue-500"
-          style={{ fontSize: "1.25rem" }}
+          style={{ fontSize: "1.25rem", color: "#2791C1" }}
         />
       </div>
       <div className="space-y-2 sm:space-y-3 md:space-y-4">
@@ -432,7 +431,7 @@ const TrueHireLanding = () => {
                       .querySelector(".solution-section")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
-                  className="w-full sm:w-auto text-gray-900 font-medium hover:text-gray-600 transition-all text-sm sm:text-base"
+                  className="w-full sm:w-auto text-gray-900 font-medium hover:text-gray-600 transition-all text-sm sm:text-base text-center"
                 >
                   Learn More
                 </button>
@@ -591,8 +590,8 @@ const TrueHireLanding = () => {
               >
                 <div className="h-32 sm:h-40 md:h-60 flex items-center justify-center">
                   <item.Icon
-                    style={{ fontSize: "60px" }}
-                    className="text-blue-500 sm:text-7xl md:text-8xl"
+                    style={{ fontSize: "5em", color: "#2791C1" }}
+                    className="sm:text-7xl md:text-8xl"
                   />
                 </div>
                 <div className="p-4 sm:p-6 md:p-8 text-center">
@@ -649,8 +648,8 @@ const TrueHireLanding = () => {
               <div key={i} className="text-center group">
                 <div className="mb-3 sm:mb-4 md:mb-6 transform group-hover:scale-110 transition-transform flex justify-center">
                   <item.Icon
-                    style={{ fontSize: "2rem" }}
-                    className="text-blue-500 sm:text-4xl md:text-5xl"
+                    style={{ fontSize: "2rem", color: "#2791C1" }}
+                    className="sm:text-4xl md:text-5xl"
                   />
                 </div>
                 <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 sm:mb-3 px-2">
@@ -792,8 +791,8 @@ const TrueHireLanding = () => {
               >
                 <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-6 sm:mb-8 group-hover:scale-110 transition-transform">
                   <item.Icon
-                    style={{ fontSize: "1.75rem" }}
-                    className="text-blue-500 sm:text-4xl"
+                    style={{ fontSize: "1.75rem", color: "#2791C1" }}
+                    className="sm:text-4xl"
                   />
                 </div>
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
