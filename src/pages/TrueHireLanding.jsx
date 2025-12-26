@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  FingerprintOutlined,
   CheckCircleOutline,
   PersonSearchOutlined,
   BarChartOutlined,
@@ -8,10 +7,12 @@ import {
   AccessTimeOutlined,
   VerifiedUserOutlined,
   CheckCircle,
-  LockOpen,
+  EmailOutlined,
+  LinkOutlined,
+  AssignmentOutlined,
 } from "@mui/icons-material";
 
-// Dashboard Mockup Component - Fully Responsive
+// Simplified Dashboard Mockup - Reference Checking Focus
 const DashboardMockup = () => (
   <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl border-2 border-gray-200 overflow-hidden">
     <div className="bg-gradient-to-r from-gray-50 to-white border-b border-gray-200 px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 flex items-center justify-between">
@@ -21,7 +22,7 @@ const DashboardMockup = () => (
           style={{ backgroundColor: "#2791C1" }}
         ></div>
         <span className="font-semibold text-gray-900 text-xs sm:text-sm md:text-base">
-          Candidate Report
+          Reference Report
         </span>
       </div>
       <div className="flex gap-1.5 sm:gap-2">
@@ -46,10 +47,10 @@ const DashboardMockup = () => (
       </div>
       <div className="bg-white rounded-lg sm:rounded-xl shadow-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-5 md:mb-6 border border-gray-100">
         <h4 className="font-semibold text-gray-700 text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">
-          Overall Integrity Score
+          Overall Reference Score
         </h4>
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-          <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex-shrink-0">
+          <div className="relative w-24 h-20 sm:w-28 sm:h-28 md:w-32 md:h-30 flex-shrink-0">
             <svg className="transform -rotate-90 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
               <circle
                 cx="48"
@@ -119,147 +120,44 @@ const DashboardMockup = () => (
               <span className="text-2xl sm:text-2xl md:text-3xl font-bold text-gray-900">
                 92%
               </span>
-              <span className="text-xs text-gray-500">High</span>
+              <span className="text-xs text-gray-500">Strong</span>
             </div>
           </div>
-          <div className="flex-1 space-y-1.5 sm:space-y-2 w-full sm:w-auto">
+          <div className="flex-1 space-y-2 sm:space-y-3 w-full sm:w-auto">
             <div className="flex items-center gap-2">
               <CheckCircleOutline
                 style={{ fontSize: "1rem" }}
-                className="text-green-500 sm:text-lg"
+                className="text-green-500 sm:text-lg flex-shrink-0"
               />
-              <span className="text-xs sm:text-sm" style={{ color: "#2791C1" }}>
-                Resume verified
+              <span className="text-xs sm:text-sm text-gray-700">
+                All references verified
               </span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircleOutline
                 style={{ fontSize: "1rem" }}
-                className="text-green-500 sm:text-lg"
+                className="text-green-500 sm:text-lg flex-shrink-0"
               />
-              <span className="text-xs sm:text-sm" style={{ color: "#2791C1" }}>
-                References validated
+              <span className="text-xs sm:text-sm text-gray-700">
+                Employment dates confirmed
               </span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircleOutline
                 style={{ fontSize: "1rem" }}
-                className="text-yellow-500 sm:text-lg"
+                className="text-green-500 sm:text-lg flex-shrink-0"
               />
-              <span className="text-xs sm:text-sm" style={{ color: "#2791C1" }}>
-                AI assistance detected
+              <span className="text-xs sm:text-sm text-gray-700">
+                Positive feedback received
               </span>
             </div>
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-2 sm:gap-3">
-        <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-md sm:rounded-lg p-2 sm:p-3 border border-green-200">
-          <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
-            <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <CheckCircleOutline
-                style={{ fontSize: "0.7rem" }}
-                className="text-white sm:text-xs md:text-sm"
-              />
-            </div>
-            <span className="text-xs font-semibold text-green-900 hidden sm:inline">
-              Resume
-            </span>
-            <span className="text-xs font-semibold text-green-900 sm:hidden">
-              Res.
-            </span>
-          </div>
-          <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-700">
-            98%
-          </p>
-        </div>
-        <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-md sm:rounded-lg p-2 sm:p-3 border border-yellow-200">
-          <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
-            <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-xs font-bold">!</span>
-            </div>
-            <span className="text-xs font-semibold text-yellow-900 hidden sm:inline">
-              Interview
-            </span>
-            <span className="text-xs font-semibold text-yellow-900 sm:hidden">
-              Int.
-            </span>
-          </div>
-          <p className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-700">
-            85%
-          </p>
-        </div>
-        <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-md sm:rounded-lg p-2 sm:p-3 border border-green-200">
-          <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
-            <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <CheckCircleOutline
-                style={{ fontSize: "0.7rem" }}
-                className="text-white sm:text-xs md:text-sm"
-              />
-            </div>
-            <span className="text-xs font-semibold text-green-900 hidden sm:inline">
-              Reference
-            </span>
-            <span className="text-xs font-semibold text-green-900 sm:hidden">
-              Ref.
-            </span>
-          </div>
-          <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-700">
-            94%
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const FeatureMockup = ({ type }) => {
-  if (type === "confidence") {
-    return (
-      <div className="bg-white rounded-lg sm:rounded-xl shadow-xl border border-gray-200 p-4 sm:p-5 md:p-6">
-        <div className="flex items-center justify-between mb-3 sm:mb-4">
-          <h4 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">
-            Confidence Analysis
-          </h4>
-          <BarChartOutlined style={{ fontSize: "1.25rem", color: "#2791C1" }} />
-        </div>
-        <div className="space-y-2 sm:space-y-3">
-          {[
-            { label: "Resume Authenticity", value: 98, color: "green" },
-            { label: "Experience Verification", value: 95, color: "green" },
-            { label: "Interview Consistency", value: 85, color: "yellow" },
-            { label: "Reference Validation", value: 94, color: "green" },
-          ].map((item, i) => (
-            <div key={i}>
-              <div className="flex justify-between text-xs sm:text-sm mb-1">
-                <span className="text-gray-600">{item.label}</span>
-                <span className={`font-semibold text-${item.color}-600`}>
-                  {item.value}%
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-1.5 sm:h-2">
-                <div
-                  className={`bg-gradient-to-r from-${item.color}-400 to-${item.color}-600 h-1.5 sm:h-2 rounded-full`}
-                  style={{ width: `${item.value}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="bg-white rounded-lg sm:rounded-xl shadow-xl border border-gray-200 p-4 sm:p-5 md:p-6">
-      <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <h4 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">
-          Reference Check
+      <div className="space-y-2 sm:space-y-3">
+        <h4 className="font-semibold text-gray-700 text-xs sm:text-sm uppercase tracking-wide mb-3">
+          Reference Validation
         </h4>
-        <PersonSearchOutlined
-          style={{ fontSize: "1.25rem", color: "#2791C1" }}
-        />
-      </div>
-      <div className="space-y-2 sm:space-y-3 md:space-y-4">
         {[
           {
             name: "Michael Chen",
@@ -305,8 +203,8 @@ const FeatureMockup = ({ type }) => {
         ))}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 const TrueHireLanding = () => {
   const [formData, setFormData] = useState({
@@ -402,17 +300,17 @@ const TrueHireLanding = () => {
         </div>
       </header>
 
+      {/* HERO SECTION - NEW MESSAGING */}
       <section className="pt-24 sm:pt-32 md:pt-40 pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
             <div className="text-center lg:text-left">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
-                Know Who You're Really Hiring
+                Automated Reference Checking That Saves You Hours
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-500 mb-6">
-                Verify candidate authenticity from resume to reference. Get
-                confidence scores and reduce bad hires by up to 50% in the AI
-                era.
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
+                Verify candidates in 48 hours with automated reference checks.
+                Integrates with your ATS.
               </p>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center lg:items-start gap-3 sm:gap-4 mb-6 sm:mb-8">
                 <button
@@ -423,12 +321,12 @@ const TrueHireLanding = () => {
                   }
                   className="w-full sm:w-auto bg-black text-white px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg text-sm sm:text-base"
                 >
-                  Join the Waitlist – Get Early Access
+                  Join 100+ Recruiters on the Waitlist
                 </button>
                 <button
                   onClick={() =>
                     document
-                      .querySelector(".solution-section")
+                      .querySelector(".features-section")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                   className="w-full sm:w-auto text-gray-900 font-medium hover:text-gray-600 transition-all text-sm sm:text-base text-center"
@@ -436,13 +334,8 @@ const TrueHireLanding = () => {
                   Learn More
                 </button>
               </div>
-              <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2">
-                The only recruiting platform that validates candidates
-                end-to-end.
-              </p>
-              <p className="text-xs sm:text-sm md:text-base text-gray-500">
-                Pilots start early 2026 – secure your spot. Limited free beta
-                access.
+              <p className="text-xs sm:text-sm text-gray-500">
+                Beta pilots launching Q1 2026. Free for first 50 companies.
               </p>
             </div>
             <div className="block mt-6 lg:mt-0">
@@ -455,6 +348,7 @@ const TrueHireLanding = () => {
             </div>
           </div>
 
+          {/* FORM SECTION */}
           <div
             id="hero-form"
             className="max-w-2xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 mt-12 sm:mt-16 md:mt-24 border border-gray-200"
@@ -555,52 +449,51 @@ const TrueHireLanding = () => {
         </div>
       </section>
 
+      {/* PROBLEM SECTION - REFERENCE CHECKING FOCUSED */}
       <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-black leading-tight px-4">
-              The only recruiting platform that validates candidates end-to-end.
+              Reference Checking Shouldn't Take Weeks
             </h2>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 leading-relaxed px-4">
-              Pilots start early 2026 – secure your spot. Limited free beta
-              access.
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed px-4">
+              Most teams still manually email references and wait days for
+              responses. TrueHire automates the entire process.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-20">
             {[
               {
-                Icon: LockOpen,
-                label: "AI ERA",
-                title: "Hiring in the AI Era is Broken",
+                Icon: AccessTimeOutlined,
+                title: "Manual reference checks take 3-5 hours per candidate",
+                highlight: "3-5 hours",
               },
               {
-                Icon: CheckCircle,
-                label: "Points",
-                title: "AI-generated applications overwhelm teams",
+                Icon: TrendingUpOutlined,
+                title: "Fake references cost companies $15K+ per bad hire",
+                highlight: "$15K+",
               },
               {
-                Icon: VerifiedUserOutlined,
-                label: "Stories",
-                title: "No easy way to verify authenticity",
+                Icon: EmailOutlined,
+                title: "Reference checking delays your hiring process by days",
+                highlight: "Days of delay",
               },
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-gray-50 rounded-2xl sm:rounded-3xl overflow-hidden hover:shadow-lg transition-all"
+                className="bg-gray-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 text-center hover:shadow-lg transition-all border-2 border-gray-100"
               >
-                <div className="h-32 sm:h-40 md:h-60 flex items-center justify-center">
+                <div className="flex justify-center mb-4 sm:mb-6">
                   <item.Icon
-                    style={{ fontSize: "5em", color: "#2791C1" }}
-                    className="sm:text-7xl md:text-8xl"
+                    style={{ fontSize: "3rem", color: "#2791C1" }}
+                    className="sm:text-5xl md:text-6xl"
                   />
                 </div>
-                <div className="p-4 sm:p-6 md:p-8 text-center">
-                  <p className="text-xs text-gray-400 uppercase tracking-wide mb-2 sm:mb-3 font-medium">
-                    {item.label}
-                  </p>
-                  <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-black">
-                    {item.title}
-                  </h3>
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-black mb-2">
+                  {item.title}
+                </h3>
+                <div className="text-lg sm:text-xl font-bold text-red-600">
+                  {item.highlight}
                 </div>
               </div>
             ))}
@@ -608,41 +501,42 @@ const TrueHireLanding = () => {
         </div>
       </section>
 
+      {/* FEATURES SECTION - REFERENCE CHECKING ONLY */}
       <section
-        className="solution-section py-12 sm:py-16 md:py-24 px-4 sm:px-6"
+        className="features-section py-12 sm:py-16 md:py-24 px-4 sm:px-6"
         style={{ background: "linear-gradient(to bottom, #e8f5fa, white)" }}
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 md:mb-20">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
-              TrueHire: End-to-End Authenticity Verification
+              Reference Automation Done Right
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 px-4">
-              Integrates with your ATS. Automatically checks every stage for
-              real signals.
+              Four powerful features that replace 3-5 hours of manual work per
+              candidate.
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 md:mb-20">
             {[
               {
-                Icon: FingerprintOutlined,
-                title: "AI Detection",
-                desc: "AI-assistance scoring + pattern flagging",
+                Icon: EmailOutlined,
+                title: "Automated Reference Outreach",
+                desc: "Automatically contact references via email with structured questions. Get responses in 24-48 hours.",
               },
               {
                 Icon: CheckCircleOutline,
-                title: "Interview Analysis",
-                desc: "Consistency checks + scripted response detection",
+                title: "Fraud Detection",
+                desc: "Verify references are real people through LinkedIn cross-checks and contact validation.",
               },
               {
-                Icon: PersonSearchOutlined,
-                title: "Reference Check",
-                desc: "Verify real references + cross-validation",
+                Icon: LinkOutlined,
+                title: "ATS Integration",
+                desc: "Works with Greenhouse, Lever, BambooHR. Sync candidate data automatically.",
               },
               {
                 Icon: BarChartOutlined,
-                title: "Integrity Report",
-                desc: "0-100% confidence score with flags",
+                title: "Reference Dashboard",
+                desc: "See all reference feedback in one place with clear red/yellow/green flags.",
               },
             ].map((item, i) => (
               <div key={i} className="text-center group">
@@ -661,128 +555,137 @@ const TrueHireLanding = () => {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-            <FeatureMockup type="confidence" />
-            <FeatureMockup type="reference" />
-          </div>
           <div className="shadow-2xl border-2 border-blue-100 rounded-xl sm:rounded-2xl overflow-hidden">
-            <img
-              src="https://res.cloudinary.com/dpcgk2sev/image/upload/v1766608204/truehire_logo_u5c805.jpg"
-              alt="TrueHire Platform"
-              className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
-            />
+            <DashboardMockup />
           </div>
         </div>
       </section>
 
+      {/* HOW IT WORKS - SIMPLIFIED TO 3 STEPS */}
       <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-12 sm:mb-16 md:mb-20 px-4">
             How It Works
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center">
-            <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-              {[
-                "Upload resume or integrate ATS",
-                "Automated checks run",
-                "AI analyzes patterns",
-                "Get confidence dashboard",
-              ].map((text, i) => (
+          <div className="space-y-4 sm:space-y-6">
+            {[
+              {
+                step: 1,
+                title: "Connect Your ATS",
+                desc: "Integrate with Greenhouse, Lever, or upload candidate info manually. Takes 5 minutes.",
+              },
+              {
+                step: 2,
+                title: "Automated Reference Checks",
+                desc: "We contact references, verify LinkedIn profiles, and collect structured feedback automatically.",
+              },
+              {
+                step: 3,
+                title: "Get Your Report",
+                desc: "Receive reference validation dashboard in 24-48 hours with clear hiring recommendations.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 hover:shadow-lg transition-all bg-white border-2 border-gray-200"
+              >
                 <div
-                  key={i}
-                  className="rounded-xl sm:rounded-2xl p-3 sm:p-4 flex items-center hover:shadow-lg transition-all border-2 border-dashed border-black"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-lg sm:text-xl md:text-2xl flex-shrink-0 hover:scale-110 transition-transform"
+                  style={{ background: "#2791C1" }}
                 >
-                  <div
-                    className="w-10 h-10 sm:w-12 sm:h-12 text-white rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-lg sm:text-xl md:text-2xl mr-4 sm:mr-6 md:mr-8 flex-shrink-0 hover:scale-110 transition-transform"
-                    style={{ background: "#2791C1" }}
-                  >
-                    {i + 1}
-                  </div>
-                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-900 font-medium">
-                    {text}
-                  </p>
+                  {item.step}
                 </div>
-              ))}
-            </div>
-            <div className="hidden lg:block">
-              <div className="bg-white rounded-xl shadow-xl border-2 border-gray-200 p-5 transform hover:scale-105 transition-all">
-                <div className="text-center mb-4">
-                  <div className="relative w-24 h-24 mx-auto">
-                    <svg className="transform -rotate-90 w-24 h-24">
-                      <circle
-                        cx="48"
-                        cy="48"
-                        r="42"
-                        stroke="#e5e7eb"
-                        strokeWidth="6"
-                        fill="none"
-                      />
-                      <circle
-                        cx="48"
-                        cy="48"
-                        r="42"
-                        stroke="#2791C1"
-                        strokeWidth="6"
-                        fill="none"
-                        strokeDasharray="263.89"
-                        strokeDashoffset="26.389"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-2xl font-bold text-gray-900">
-                        92%
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-sm font-semibold text-gray-900 mt-2">
-                    Confidence Score
+                <div className="flex-1">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    {item.desc}
                   </p>
-                </div>
-                <div className="space-y-2">
-                  {[
-                    { label: "Resume Verified", color: "green" },
-                    { label: "References Valid", color: "green" },
-                    { label: "AI Detected", color: "yellow" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs">
-                      <div
-                        className={`w-2 h-2 bg-${item.color}-500 rounded-full`}
-                      ></div>
-                      <span className="text-gray-600">{item.label}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* WHAT WE CHECK SECTION - NEW */}
       <section
         className="py-12 sm:py-16 md:py-24 px-4 sm:px-6"
-        style={{ background: "linear-gradient(to bottom, white, #e8f5fa)" }}
+        style={{ background: "linear-gradient(to bottom, white, #f9fafb)" }}
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-12 sm:mb-16 md:mb-20 px-4">
-            Why Early Adopters Love the Vision
+            What We Check
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-12 sm:mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
-                Icon: TrendingUpOutlined,
-                title: "Reduce bad hires.",
-                desc: "Cut your hiring risk by 50% with confidence scores.",
+                Icon: VerifiedUserOutlined,
+                title: "Reference Identity",
+                desc: "Verify they're a real person via LinkedIn",
               },
+              {
+                Icon: AssignmentOutlined,
+                title: "Employment Dates",
+                desc: "Confirm job titles and tenure match resume",
+              },
+              {
+                Icon: PersonSearchOutlined,
+                title: "Performance Feedback",
+                desc: "Collect structured feedback on skills and work quality",
+              },
+              {
+                Icon: BarChartOutlined,
+                title: "Red Flags",
+                desc: "Identify suspicious patterns like fake phone numbers",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-lg hover:shadow-xl transition-all border border-gray-200 group"
+              >
+                <div className="flex justify-center mb-4 sm:mb-6">
+                  <item.Icon
+                    style={{ fontSize: "2.5rem", color: "#2791C1" }}
+                    className="group-hover:scale-110 transition-transform"
+                  />
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BENEFITS SECTION - REDESIGNED */}
+      <section
+        className="py-12 sm:py-16 md:py-24 px-4 sm:px-6"
+        style={{ background: "linear-gradient(to bottom, #f9fafb, #e8f5fa)" }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-12 sm:mb-16 md:mb-20 px-4">
+            Why Recruiters Choose TrueHire
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+            {[
               {
                 Icon: AccessTimeOutlined,
-                title: "Save hours per hire.",
-                desc: "Let automation handle resume and reference checking.",
+                title: "Save 3-5 Hours Per Hire",
+                desc: "Automation handles reference outreach, follow-ups, and verification while you focus on interviewing.",
               },
               {
-                Icon: VerifiedUserOutlined,
-                title: "Real confidence.",
-                desc: "Automated insights – trust every hire is authentic.",
+                Icon: CheckCircleOutline,
+                title: "Catch Fake References",
+                desc: "LinkedIn verification and contact validation flag suspicious references before you waste time.",
+              },
+              {
+                Icon: TrendingUpOutlined,
+                title: "Hire Faster",
+                desc: "Get reference checks done in 48 hours instead of 1-2 weeks of email tag.",
               },
             ].map((item, i) => (
               <div
@@ -804,19 +707,35 @@ const TrueHireLanding = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
           <div
             className="text-center text-white p-6 sm:p-8 md:p-12 shadow-xl rounded-xl sm:rounded-2xl"
             style={{ background: "#000", border: "5px dashed white" }}
           >
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-3 sm:mb-4">
-              Join HR leaders from top tech startups already on the waitlist.
+              Join 100+ Recruiters on the Waitlist
             </p>
             <p
-              className="text-sm sm:text-base md:text-lg"
+              className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8"
               style={{ color: "#d4ebf5" }}
             >
-              Beta pilots launching soon – limited free spots.
+              Beta pilots launching Q1 2026. Free for first 50 companies.
             </p>
+            <button
+              onClick={() =>
+                document
+                  .getElementById("hero-form")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="bg-white text-black px-8 sm:px-10 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all inline-block"
+            >
+              Get Early Access
+            </button>
           </div>
         </div>
       </section>
@@ -827,7 +746,7 @@ const TrueHireLanding = () => {
             TrueHire®
           </div>
           <p className="text-xs sm:text-sm mb-6">
-            Built for recruiters who want confidence in every hire.
+            Automated reference checking for modern recruiting.
           </p>
           <div className="border-t border-gray-800 pt-6">
             <p className="text-xs">TrueHire © 2025. All rights reserved.</p>
@@ -839,8 +758,6 @@ const TrueHireLanding = () => {
         html { scroll-behavior: smooth; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .animate-spin { animation: spin 1s linear infinite; }
-        
-        /* Ensure responsive text wrapping */
         * { word-wrap: break-word; }
       `}</style>
     </div>
